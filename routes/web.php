@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\FuncCall;
 
 Route::get('/', function () {
     return view('utils.home');
@@ -14,8 +15,12 @@ Route::get('/turma/{course_name}' , function($name){
     return "<h4>Olá turma $name</h4>";
 });
 
+Route::get('/add_users', function(){
+    return view('users.add_user');
+})->name('users.add');
+
 
 Route::fallback(function(){
-    return '<h1>Ups, essa página não existe</h1>';
+    return view('utils.fallback');
 });
 
