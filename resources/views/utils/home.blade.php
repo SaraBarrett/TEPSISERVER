@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.fe_layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-
-<body>
+@section('content')
     <h6>Homepage</h6>
     <ul>
         <li><a href="{{ route('utils.home') }}">Hello</a></li>
         <li><a href="{{ route('users.add') }}">Adicionar Utilizadores</a></li>
     </ul>
-
-</body>
-
-</html>
+@endsection

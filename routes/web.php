@@ -1,23 +1,19 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Node\Expr\FuncCall;
 
-Route::get('/', function () {
-    return view('utils.home');
-});
 
-Route::get('/hello', function () {
-    return view('welcome');
-})->name(('utils.home'));
+Route::get('/', [UtilController::class, 'home']);
+
+Route::get('/hello', [UtilController::class, 'welcome'])->name('utils.home');
 
 Route::get('/turma/{course_name}' , function($name){
     return "<h4>Olá turma $name</h4>";
 });
 
-Route::get('/add_users', function(){
-    return view('users.add_user');
-})->name('users.add');
+Route::get('/add_users', [UserController::class, 'addUser'])->name('users.add');
 
 
 Route::fallback(function(){
