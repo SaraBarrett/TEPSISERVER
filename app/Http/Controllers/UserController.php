@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
    public function addUser(){
-    
-    return view('users.add_user');
+    $classDelegate = 'Daniel Borges';
+    return view('users.add_user', compact('classDelegate'));
 }
 }
