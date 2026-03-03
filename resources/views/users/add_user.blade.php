@@ -2,6 +2,14 @@
 
 @section('content')
     <img width="250px" height="200px" src="{{ asset('images/5ea9a2c7-bd2e-46b0-b858-701f9cfbd7b1.png') }}" alt="">
+    {{-- lista de users de simulação da bd --}}
+    <ul>
+        @foreach ($usersNotFromDB as $user)
+        <li>{{$user['name']}}</li>
+        @endforeach
+    </ul>
+
+
     <h3>Aqui podes adicionar utilizadores</h3>
     @if ($classDelegate)
         <h6>Se tiver esclarecimentos acerca da app, consulte o {{ $classDelegate }}</h6>

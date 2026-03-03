@@ -9,4 +9,10 @@
         <li><a href="{{ route('utils.home') }}">Hello</a></li>
         <li><a href="{{ route('users.add') }}">Adicionar Utilizadores</a></li>
     </ul>
+    <h5>Lista de Tarefas</h5>
+    <ul>
+        @foreach ($tasks as $task)
+            <li>{{ $task }}</li>
+        @endforeach
+    </ul>
 @endsection

@@ -8,31 +8,39 @@ class UtilController extends Controller
 {
     public function home() {
 
-    //variável de servidor: no futuro irá carregar dados a partir da Base de Dados
-    $className = 'Técnico Especialista de Programação e Sistemas de Informação';
+        //variável de servidor: no futuro irá carregar dados a partir da Base de Dados
+        $className = 'Técnico Especialista de Programação e Sistemas de Informação';
 
-    $courseInfo =[
-        'classesNr' =>5,
-        'hrs'=>'1500h',
-        'responsable' =>'Dra Anabela'
-    ];
+        $courseInfo =[
+            'classesNr' =>5,
+            'hrs'=>'1500h',
+            'responsable' =>'Dra Anabela'
+        ];
 
-    $cesaeInfo = [
-        'name' => 'Cesae',
-        'address'=> 'Rua do Cesae',
-        'email'=> 'cesae@cesae.pt'
-    ];
+        $cesaeInfo = [
+            'name' => 'Cesae',
+            'address'=> 'Rua do Cesae',
+            'email'=> 'cesae@cesae.pt'
+        ];
 
-    //fazer debug de código (ver os valores armazenados)
-    //dd($courseInfo['responsable']);
+        //fazer debug de código (ver os valores armazenados)
+        //dd($courseInfo['responsable']);
 
 
-    $classes = ['TEPSI', 'Software Developer', 'LowCode'];
+        $classes = ['TEPSI', 'Software Developer', 'LowCode'];
 
-    return view('utils.home', compact('className','courseInfo', 'cesaeInfo'));
+        $tasks= $this->getTasks();
+
+        return view('utils.home', compact('className','courseInfo', 'cesaeInfo','tasks'));
     }
 
     public function welcome() {
         return view('welcome');
-}
+    }
+
+    protected function getTasks(){
+        $tasks= ['ir à praia', 'estudar um bocadinho', 'ser um colega fixe'];
+
+        return $tasks;
+    }
 }
