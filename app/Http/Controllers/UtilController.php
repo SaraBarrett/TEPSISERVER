@@ -17,13 +17,19 @@ class UtilController extends Controller
         'responsable' =>'Dra Anabela'
     ];
 
+    $cesaeInfo = [
+        'name' => 'Cesae',
+        'address'=> 'Rua do Cesae',
+        'email'=> 'cesae@cesae.pt'
+    ];
+
     //fazer debug de código (ver os valores armazenados)
     //dd($courseInfo['responsable']);
 
 
     $classes = ['TEPSI', 'Software Developer', 'LowCode'];
 
-    return view('utils.home', compact('className','courseInfo'));
+    return view('utils.home', compact('className','courseInfo', 'cesaeInfo'));
     }
 
     public function welcome() {
