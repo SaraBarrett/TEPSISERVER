@@ -14,6 +14,7 @@ Route::get('/turma/{course_name}' , function($name){
 });
 
 Route::get('/add_users', [UserController::class, 'addUser'])->name('users.add');
+Route::get('/all_users', [UserController::class, 'allUsers'])->name('users.all');
 
 
 Route::fallback(function(){

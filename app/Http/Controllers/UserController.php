@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -14,6 +15,16 @@ class UserController extends Controller
         //dd($usersNotFromDB);
 
         return view('users.add_user', compact('classDelegate','usersNotFromDB'));
+    }
+
+    public function allUsers(){
+        //carregar todos os dados da tabela de users
+        $usersFromDB = DB::table('users')
+        //->where('password', 'Sara1234')
+        ->get();
+        //dd($usersFromDB);
+
+        return view('users.all_users', compact('usersFromDB'));
     }
 
     protected function getUsersNotFromDB(){
