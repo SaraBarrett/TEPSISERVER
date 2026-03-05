@@ -9,6 +9,7 @@
         <li><a href="{{ route('utils.home') }}">Hello</a></li>
         <li><a href="{{ route('users.add') }}">Adicionar Utilizadores</a></li>
         <li><a href="{{ route('users.all') }}">Todos os Utilizadores</a></li>
+        <li><a href="{{ route('tasks.all') }}">Todas as Tarefas</a></li>
     </ul>
     <h5>Lista de Tarefas</h5>
     <ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,12 +20,28 @@ class UserController extends Controller
 
     public function allUsers(){
         //carregar todos os dados da tabela de users
-        $usersFromDB = DB::table('users')
+        $usersFromDB = User::get();
         //->where('password', 'Sara1234')
-        ->get();
+
         //dd($usersFromDB);
 
         return view('users.all_users', compact('usersFromDB'));
+    }
+    public function viewUser($id){
+
+    $user = User::where('id', $id)->first();
+
+
+   return view('users.view', compact('user'));
+    }
+
+    public function deleteUser($id){
+
+
+    DB::table('tasks')->where('user_id',$id)->delete();
+        User::where('id', $id)->delete();
+
+        return back();
     }
 
     protected function getUsersNotFromDB(){
