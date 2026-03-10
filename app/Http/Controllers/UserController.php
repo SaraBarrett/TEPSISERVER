@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -42,6 +43,38 @@ class UserController extends Controller
         User::where('id', $id)->delete();
 
         return back();
+    }
+
+    public function updateUser(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'nif' => 'min:8'
+        ]);
+
+        User::where('id', $request->id)->update([
+            'name'=> $request->name,
+            'nif'=> $request->nif,
+        ]);
+
+
+        return redirect()->route('users.all')->with('message', 'User actualizado com sucesso!');
+    }
+
+    public function storeUsers(Request $request){
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'email' =>'required|unique:users|email',
+            'password' => 'required|min:8'
+        ]);
+
+        User::insert([
+            'name' =>$request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->route('users.all')->with('message', 'User adicionado com sucesso!');
     }
 
     protected function getUsersNotFromDB(){
