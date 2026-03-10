@@ -21,7 +21,15 @@ class UserController extends Controller
 
     public function allUsers(){
         //carregar todos os dados da tabela de users
-        $usersFromDB = User::get();
+
+        $search = request()->query('search')? request()->query('search'): null;
+
+        $usersFromDB = DB::table('users');
+            if($search){
+            $usersFromDB = $usersFromDB->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%");
+            }
+        $usersFromDB = $usersFromDB->get();
         //->where('password', 'Sara1234')
 
         //dd($usersFromDB);

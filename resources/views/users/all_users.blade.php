@@ -7,6 +7,10 @@
         </div>
         @endsession
         <h5>Aqui estará a lista de todos os users</h5>
+        <form>
+            <input type="text" placeholder="pesquisa" name="search" id="">
+            <button class="btn btn-secondary">Procurar</button>
+        </form>
         <table class="table">
             <thead>
                 <tr>

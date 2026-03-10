@@ -21,15 +21,16 @@ class TaskController extends Controller
     }
 
      public function viewTask($id){
+        $users = User::all();
 
     $task = db::table('tasks')
 
      ->join('users', 'tasks.user_id', 'users.id')
-        ->select('tasks.*', 'users.name as username')
+    ->select('tasks.*', 'users.name as username')
     ->where('tasks.id', $id)->first();
 
 
-   return view('tasks.view', compact('task'));
+   return view('tasks.view', compact('task', 'users'));
     }
 
     public function deleteTask($id){
@@ -59,5 +60,23 @@ class TaskController extends Controller
         ]);
 
         return redirect()->route('tasks.all')->with('message', 'Tarefa adicionado com sucesso!');
+    }
+
+    public function updateTask(Request $request){
+
+      $request->validate([
+            'name'=>'required|string|max:50',
+            'user_id'=>'required',
+        ]);
+
+        DB::table('tasks')->where('id',$request->id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+
+            ]);
+
+
+        return redirect()->route('tasks.all')->with('message', 'Atualizado com sucesso!');
     }
 }
