@@ -1,6 +1,11 @@
 @extends('layouts.fe_layout')
 
 @section('content')
+    @auth
+        <h5>Olá {{ Auth::user()->name }}</h5>
+    @endauth
+
+
     <h6>Homepage {{ $className }}</h6>
     <p>O curso tem {{ $courseInfo['classesNr'] }} disciplinas, {{ $courseInfo['hrs'] }} e a responsável é a
         {{ $courseInfo['responsable'] }}</p>

@@ -34,7 +34,7 @@ Route::get('/view_task/{id}',[TaskController::class, 'viewTask'])->name('tasks.v
 Route::get('/delete-task/{id}',[TaskController::class, 'deleteTask'])->name('tasks.delete');
 Route::put('/tasks-update', [TaskController::class, 'updateTask'])->name('tasks.update');
 
-Route::get('/all_tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
+Route::get('/all_tasks', [TaskController::class, 'allTasks'])->name('tasks.all')->middleware('auth');
 
 
 //rota onde visualizamos o formulário
