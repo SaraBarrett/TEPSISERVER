@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
@@ -44,6 +45,8 @@ Route::get('/add_tasks', [TaskController::class, 'addTask'])->name('tasks.add');
 Route::post('/store-task', [TaskController::class, 'storeTask'])->name('tasks.store');
 
 
+//paginas de Admin
+Route::get('/dashboard', [DashboardController::class, 'home'])->name('dashboard')->middleware('auth');
 
 Route::fallback(function(){
     return view('utils.fallback');
