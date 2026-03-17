@@ -21,5 +21,6 @@
             <p>password não válida</p>
         @enderror
         <button type="submit" class="btn btn-primary">Login</button>
+        <p>esqueceu-se da pass?clique <a href="{{ route('password.request') }}">aqui</a></p>
     </form>
 @endsection

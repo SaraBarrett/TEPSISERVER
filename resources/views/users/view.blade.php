@@ -2,7 +2,7 @@
 @section('content')
     <h5>Dados de User {{ $user->name }}</h5>
 
-    <form method="POST" action="{{ route('users.update') }}">
+    <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -25,6 +25,8 @@
             <input value="{{ $user->nif }}" type="text" name="nif" class="form-control" id="exampleInputName"
                 aria-describedby="emailHelp">
         </div>
+
+        <input type="file" name="photo"> <br>
         <input type="hidden" name="id" value="{{ $user->id }}">
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>

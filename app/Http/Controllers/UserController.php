@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
@@ -59,9 +61,16 @@ class UserController extends Controller
             'nif' => 'min:8'
         ]);
 
+
+        $photo = null;
+        if($request->hasFile('photo')){
+        $photo = Storage::putFile('uploadedFiles', $request->photo);
+        };
+
         User::where('id', $request->id)->update([
             'name'=> $request->name,
             'nif'=> $request->nif,
+            'photo' =>$photo
         ]);
 
 
